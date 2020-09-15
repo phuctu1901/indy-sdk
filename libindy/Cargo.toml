@@ -63,7 +63,8 @@ default-features = false
 features = ["v4"]
 
 [dependencies.ursa]
-version =  "0.3.2"
+# version =  "0.3.2"
+path = "./../../ursa/libursa"
 optional = true
 
 [target.'cfg(target_os = "android")'.dependencies]

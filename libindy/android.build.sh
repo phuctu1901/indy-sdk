@@ -10,13 +10,15 @@ export WHITE=`tput setaf 7`
 
 export BOLD=`tput bold`
 export RESET=`tput sgr0`
-
 set -e
 set -o pipefail
 WORKDIR=${PWD}
 LIBINDY_WORKDIR=${WORKDIR}
 CI_DIR="${LIBINDY_WORKDIR}/ci"
-export ANDROID_BUILD_FOLDER="/tmp/android_build"
+export ANDROID_BUILD_FOLDER="/media/workspaces/data/android_build"
+export TOOLCHAIN_PREFIX="${ANDROID_BUILD_FOLDER}/toolchains/linux"
+
+
 DOWNLOAD_PREBUILTS="0"
 
 while getopts ":d" opt; do
@@ -163,8 +165,14 @@ build(){
 
 
 generate_arch_flags ${TARGET_ARCH}
+echo "OK 1"
 setup_dependencies
+echo "OK 2"
 set_env_vars
+echo "OK 3"
+
 create_standalone_toolchain_and_rust_target
+echo "OK 4"
+
 create_cargo_config
 build && package_library

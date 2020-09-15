@@ -6,7 +6,7 @@ WORKDIR=${PWD}
 LIBINDY_WORKDIR=${WORKDIR}
 CI_DIR="${LIBINDY_WORKDIR}/ci"
 BUILD_TYPE="--release"
-export ANDROID_BUILD_FOLDER="/tmp/android_build"
+export ANDROID_BUILD_FOLDER="/media/workspaces/data/android_build"
 
 TARGET_ARCH=$1
 

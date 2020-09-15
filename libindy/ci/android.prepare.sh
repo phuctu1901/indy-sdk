@@ -2,7 +2,7 @@
 set -e
 export TARGET_ARCH=$2
 
-export ANDROID_BUILD_FOLDER="/tmp/android_build"
+export ANDROID_BUILD_FOLDER="/media/workspaces/data/android_build"
 source setup.android.env.sh
 
 echo ">> in runner script"

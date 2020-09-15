@@ -12,6 +12,7 @@ export ANDROID_HOME=${ANDROID_SDK}
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/tools/bin
+export ANDROID_NDK_ROOT=${TOOLCHAIN_PREFIX}/android-ndk-r20
 
 mkdir -p ${ANDROID_SDK}
 
@@ -49,7 +50,13 @@ delete_existing_avd(){
 }
 
 download_emulator() {
-    curl -o emu.zip https://dl.google.com/android/repository/emulator-linux-5889189.zip
+    if [ ! -d " emu.zip" ] ; then
+        echo "${GREEN}Downloading emulator-linux-5889189.zip"
+        curl -o emu.zip https://dl.google.com/android/repository/emulator-linux-5889189.zip
+        echo "${GREEN}Done!${RESET}"
+    else
+        echo "${BLUE}Skipping download"
+    fi
 }
 
 create_avd(){
